@@ -33,10 +33,12 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		repository.deleteAll();
 		File directoryPath = new File("C:\\Users\\melik\\Desktop\\Spring-MVC-Project\\src\\main\\java\\com\\project\\SpringMVCProject\\XML_files");
 		File[] filesList = directoryPath.listFiles();
 
 		List<Product> products = readXMLFiles(filesList);
+		repository.saveAll(products);
 	}
 	private List<Product> readXMLFiles(File[] filesList){
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
