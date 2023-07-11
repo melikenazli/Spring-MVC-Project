@@ -20,4 +20,11 @@ public class ProductController {
         model.addAttribute("products", products);
         return "products-list";
     }
+
+    @GetMapping("/products/search")
+    public String createSearchBar(Model model){
+        String title = new String();
+        model.addAttribute("title", title);
+        return "form";
+    }
 }
