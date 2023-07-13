@@ -1,0 +1,27 @@
+package com.project.SpringMVCProject.repository;
+
+import com.project.SpringMVCProject.models.ProductDocument;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+
+import java.util.List;
+
+public class ProductDocumentRepository {
+    @Autowired
+    MongoTemplate mongoTemplate;
+
+    public ProductDocument save(ProductDocument productDocument, String collectionName){
+        return mongoTemplate.save(productDocument,collectionName);
+    }
+
+    public List<ProductDocument> findByTitle(String title){
+        Query query = new Query(Criteria.where("title").is(title));
+        return mongoTemplate.find(query, ProductDocument.class); // 3. parametre olarak collection name de verilebiliyor
+    }
+
+    public void createCollection(String collectionName){
+        mongoTemplate.createCollection(collectionName);
+    }
+}

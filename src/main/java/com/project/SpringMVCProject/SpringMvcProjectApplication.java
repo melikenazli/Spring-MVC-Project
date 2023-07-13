@@ -1,6 +1,8 @@
 package com.project.SpringMVCProject;
 
 import com.project.SpringMVCProject.models.Product;
+import com.project.SpringMVCProject.models.ProductDocument;
+import com.project.SpringMVCProject.repository.ProductDocumentRepository;
 import com.project.SpringMVCProject.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +29,9 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 	@Autowired
 	private ProductRepository repository;
 
+	@Autowired
+	private ProductDocumentRepository documentRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMvcProjectApplication.class, args);
 	}
@@ -47,10 +52,17 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			List<Product> productList = new ArrayList<>();
 			for (File file: filesList){
+				String fileName = file.getName();
+				String collectionName = fileName.replaceFirst("[.][^.]+$", "");
+				documentRepository.createCollection(collectionName);
+
 				Document doc = documentBuilder.parse(file);
 				doc.getDocumentElement().normalize();
 				NodeList nodeList = doc.getElementsByTagName("product");
 				for (int i=0;i<nodeList.getLength();i++){
+					ProductDocument productDocument = getProductDocument(nodeList.item(i));
+					documentRepository.save(productDocument, collectionName);
+
 					List<Product> templist;
 					templist = getProduct(nodeList.item(i));
 					for (int j=0;j< templist.size();j++){
@@ -106,6 +118,35 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 			}
 		}
 		return productWithDifferentPrices;
+	}
+
+	private ProductDocument getProductDocument(Node node){
+		ProductDocument productDocument = new ProductDocument();
+		if (node.getNodeType() == Node.ELEMENT_NODE){
+			Element element = (Element) node;
+
+			productDocument.setTitle(getTagValue("title", element));
+
+			Node pricesNode = element.getElementsByTagName("prices").item(0);
+			Element pricesElement = (Element) pricesNode;
+			NodeList nodeList = pricesElement.getElementsByTagName("price");
+			List<Long> prices = new ArrayList<>();
+			for (int i=0;i<nodeList.getLength();i++){
+				prices.add(Long.parseLong(nodeList.item(i).getTextContent()));
+			}
+			productDocument.setPrices(prices);
+
+			Node datesNode = element.getElementsByTagName("dates").item(0);
+			Element datesElement = (Element) datesNode;
+			NodeList nodeList2 = datesElement.getElementsByTagName("date");
+			List<LocalDate> dates = new ArrayList<>();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+			for (int i=0;i< nodeList2.getLength();i++){
+				dates.add(LocalDate.parse(nodeList2.item(i).getTextContent(), formatter));
+			}
+			productDocument.setDates(dates);
+		}
+		return productDocument;
 	}
 
 	private String getTagValue(String tag, Element element){
