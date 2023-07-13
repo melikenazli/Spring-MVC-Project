@@ -26,4 +26,8 @@ public class ProductDocumentRepository {
     public void createCollection(String collectionName){
         mongoTemplate.createCollection(collectionName);
     }
+
+    public boolean collectionExists(String collectionName){
+        return mongoTemplate.collectionExists(collectionName);
+    }
 }

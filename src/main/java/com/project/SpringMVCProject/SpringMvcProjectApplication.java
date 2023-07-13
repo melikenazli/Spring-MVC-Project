@@ -54,7 +54,9 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 			for (File file: filesList){
 				String fileName = file.getName();
 				String collectionName = fileName.replaceFirst("[.][^.]+$", "");
-				documentRepository.createCollection(collectionName);
+				if(!documentRepository.collectionExists(collectionName)){
+					documentRepository.createCollection(collectionName);
+				}
 
 				Document doc = documentBuilder.parse(file);
 				doc.getDocumentElement().normalize();
