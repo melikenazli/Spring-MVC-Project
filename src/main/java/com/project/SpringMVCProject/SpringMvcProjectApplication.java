@@ -53,17 +53,18 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 			List<Product> productList = new ArrayList<>();
 			for (File file: filesList){
 				String fileName = file.getName();
-				String collectionName = fileName.replaceFirst("[.][^.]+$", "");
-				if(!documentRepository.collectionExists(collectionName)){
+				String websiteName = fileName.replaceFirst("[.][^.]+$", "");
+
+				/*if(!documentRepository.collectionExists(collectionName)){
 					documentRepository.createCollection(collectionName);
-				}
+				}*/
 
 				Document doc = documentBuilder.parse(file);
 				doc.getDocumentElement().normalize();
 				NodeList nodeList = doc.getElementsByTagName("product");
 				for (int i=0;i<nodeList.getLength();i++){
-					ProductDocument productDocument = getProductDocument(nodeList.item(i));
-					documentRepository.save(productDocument, collectionName);
+					ProductDocument productDocument = getProductDocument(nodeList.item(i), websiteName);
+					documentRepository.save(productDocument);
 
 					List<Product> templist;
 					templist = getProduct(nodeList.item(i));
@@ -122,7 +123,7 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		return productWithDifferentPrices;
 	}
 
-	private ProductDocument getProductDocument(Node node){
+	private ProductDocument getProductDocument(Node node, String websiteName){
 		ProductDocument productDocument = new ProductDocument();
 		if (node.getNodeType() == Node.ELEMENT_NODE){
 			Element element = (Element) node;
@@ -147,6 +148,7 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 				dates.add(LocalDate.parse(nodeList2.item(i).getTextContent(), formatter));
 			}
 			productDocument.setDates(dates);
+			productDocument.setWebsite(websiteName);
 		}
 		return productDocument;
 	}

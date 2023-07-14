@@ -14,8 +14,8 @@ public class ProductDocumentRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public ProductDocument save(ProductDocument productDocument, String collectionName){
-        return mongoTemplate.save(productDocument,collectionName);
+    public ProductDocument save(ProductDocument productDocument){
+        return mongoTemplate.save(productDocument);
     }
 
     public List<ProductDocument> findByTitle(String title){
