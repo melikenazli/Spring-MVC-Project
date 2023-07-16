@@ -1,5 +1,7 @@
 package com.project.SpringMVCProject.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.SpringMVCProject.models.Product;
 import com.project.SpringMVCProject.models.ProductDocument;
 import com.project.SpringMVCProject.services.ProductDocumentService;
@@ -38,8 +40,13 @@ public class ProductController {
 
     @PostMapping("/showGraph")
     public String showGraph(@ModelAttribute("title") String title, Model model){
+        ObjectMapper objectMapper = new ObjectMapper();
         List<ProductDocument> products = productDocumentService.findAllByTitle(title);
-        model.addAttribute("products", products);
+        try {
+            model.addAttribute("products", objectMapper.writeValueAsString(products));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         return "graph";
     }
 }
