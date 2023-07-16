@@ -42,6 +42,7 @@ public class ProductController {
     public String showGraph(@ModelAttribute("title") String title, Model model){
         ObjectMapper objectMapper = new ObjectMapper();
         List<ProductDocument> products = productDocumentService.findAllByTitle(title);
+        System.out.println(products);
         try {
             model.addAttribute("products", objectMapper.writeValueAsString(products));
         } catch (JsonProcessingException e) {
