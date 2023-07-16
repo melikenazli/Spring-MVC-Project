@@ -33,13 +33,11 @@ public class ProductController {
     }
 
     @GetMapping("/products/search")
-    public String createSearchBar(Model model){
-        String title = new String();
-        model.addAttribute("title", title);
+    public String createSearchBar(){
         return "form";
     }
 
-    @PostMapping("/products/search")
+    @PostMapping("/showGraph")
     public String showGraph(@RequestParam("title") String title, Model model){
         System.out.println(title);
         System.out.println("hello");
