@@ -39,16 +39,16 @@ public class ProductController {
     }
 
     @PostMapping("/showGraph")
-    public String showGraph(@ModelAttribute("title") String title, Model model){
+    public String showGraph(@ModelAttribute("title") String title){
         System.out.println(title);
-        ObjectMapper objectMapper = new ObjectMapper();
+        /*ObjectMapper objectMapper = new ObjectMapper();
         List<ProductDocument> products = productDocumentService.findAllByTitle(title);
         System.out.println(products);
         try {
             model.addAttribute("products", objectMapper.writeValueAsString(products));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }
+        }*/
         return "graph";
     }
 }
