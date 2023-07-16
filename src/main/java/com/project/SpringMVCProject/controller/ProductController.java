@@ -41,6 +41,7 @@ public class ProductController {
     @PostMapping("/showGraph")
     public String showGraph(@ModelAttribute("title") String title){
         System.out.println(title);
+        System.out.println("hello");
         /*ObjectMapper objectMapper = new ObjectMapper();
         List<ProductDocument> products = productDocumentService.findAllByTitle(title);
         System.out.println(products);
