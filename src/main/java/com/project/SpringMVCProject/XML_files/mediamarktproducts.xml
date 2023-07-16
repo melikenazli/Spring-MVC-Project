@@ -2,9 +2,9 @@
     <product>
         <productId>1</productId>
         <prices>
-            <price>47499</price>
-            <price>46999</price>
-            <price>44999</price>
+            <price>10</price>
+            <price>2000</price>
+            <price>25000</price>
         </prices>
         <dates>
             <date>04-07-2023</date>

@@ -14,13 +14,15 @@ public class ProductDocumentRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    public ProductDocument save(ProductDocument productDocument, String collectionName){
-        return mongoTemplate.save(productDocument,collectionName);
+    public ProductDocument save(ProductDocument productDocument){
+        return mongoTemplate.save(productDocument);
     }
 
     public List<ProductDocument> findByTitle(String title){
-        Query query = new Query(Criteria.where("title").is(title));
-        return mongoTemplate.find(query, ProductDocument.class); // 3. parametre olarak collection name de verilebiliyor
+        System.out.println(title);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("title").is(title));
+        return mongoTemplate.find(query, ProductDocument.class, "productDocument"); // 3. parametre olarak collection name de verilebiliyor
     }
 
     public void createCollection(String collectionName){

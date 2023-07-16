@@ -19,8 +19,8 @@
     </ul>
   </nav>
   <div class="form-wrapper-container">
-    <form th:action="@{/}" class="search-bar">
-      <input type="text" th:text = "${title}" placeholder="Enter Product Name...">
+    <form action="/showGraph" method="post" class="search-bar" >
+      <input type="text" name="title" placeholder="Enter Product Name...">
       <button type="submit">Submit</button>
     </form>
   </div>

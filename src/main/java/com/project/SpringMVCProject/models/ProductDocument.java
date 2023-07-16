@@ -16,5 +16,6 @@ public class ProductDocument {
     private String title;
     private List<Long> prices;
     private List<LocalDate> dates;
+    private String website;
 
 }
