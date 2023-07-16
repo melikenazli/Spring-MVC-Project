@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class ProductController {
     }
 
     @PostMapping("/products/search")
-    public String showGraph(@ModelAttribute("title") String title, Model model){
+    public String showGraph(@RequestParam("title") String title, Model model){
         System.out.println(title);
         System.out.println("hello");
         ObjectMapper objectMapper = new ObjectMapper();
