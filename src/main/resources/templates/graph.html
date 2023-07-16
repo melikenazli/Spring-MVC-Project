@@ -13,8 +13,9 @@
     </div>
 </div>
 </body>
-<script>
-    var productsJsonString = '${products}';
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var productsJsonString = /*[[${products}]]*/ "Products";
     console.log(productsJsonString);
     const products = JSON.parse(productsJsonString); 
     const labels = products[0].dates;
@@ -70,4 +71,5 @@
         productChart.data.datasets.push(newDataSet);
         productChart.update();
     };
+    /*]]>*/
 </script>
