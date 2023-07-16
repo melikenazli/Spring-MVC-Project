@@ -55,10 +55,6 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 				String fileName = file.getName();
 				String websiteName = fileName.replaceFirst("[.][^.]+$", "");
 
-				/*if(!documentRepository.collectionExists(collectionName)){
-					documentRepository.createCollection(collectionName);
-				}*/
-
 				Document doc = documentBuilder.parse(file);
 				doc.getDocumentElement().normalize();
 				NodeList nodeList = doc.getElementsByTagName("product");
