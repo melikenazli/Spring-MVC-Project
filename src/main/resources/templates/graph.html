@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="graphstyle.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Graph</title>
+
+<body>
+<div class="container">
+    <div class="centered-element">
+        <canvas id="productChart" style="width:200%;height:200%"></canvas>
+    </div>
+</div>
+</body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const products = /*[[${products}]]*/ null;
+    const labels = products[0].dates;
+    const data = {
+        labels: labels,
+        datasets:[]
+    };
+
+    const config = {
+        type: 'line',
+        data,
+        options:{
+            legend:{display: true}
+        }
+    };
+
+    const productChart = new Chart(
+        document.getElementById("productChart"),
+        config
+    );
+
+    for(let i=0;i<products.length;i++){
+        addDataSet(products[i],i)
+    }
+
+    function addDataSet(productDocument, index){
+        const bg = [
+            'rgba(27, 158, 119, 0.5)',
+            'rgba(217, 95, 2, 0.5)',
+            'rgba(117, 112, 179, 0.5)',
+            'rgba(231, 41, 138, 0.5)',
+            'rgba(102, 166, 30, 0.5)',
+            'rgba(230, 171, 2, 0.5)',
+            'rgba(166, 118, 29, 0.5)',
+            'rgba(102, 102, 102, 0.5)'
+        ];
+        const bc = [
+            'rgb(27, 158, 119)',
+            'rgb(217, 95, 2)',
+            'rgb(117, 112, 179)',
+            'rgb(231, 41, 138)',
+            'rgb(102, 166, 30)',
+            'rgb(230, 171, 2)',
+            'rgb(166, 118, 29)',
+            'rgb(102, 102, 102)'
+        ];
+        const newDataSet = {
+            label: productDocument.website,
+            data: productDocument.prices,
+            backgroundColor: bg[index],
+            borderColor: bc[index]
+        }
+        productChart.data.datasets.push(newDataSet);
+        productChart.update();
+    };
+    /*]]>*/
+</script>

@@ -1,18 +1,26 @@
 package com.project.SpringMVCProject.controller;
 
 import com.project.SpringMVCProject.models.Product;
+import com.project.SpringMVCProject.models.ProductDocument;
+import com.project.SpringMVCProject.services.ProductDocumentService;
 import com.project.SpringMVCProject.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductDocumentService productDocumentService;
 
     @GetMapping("/products")
     public String listProducts(Model model){
@@ -26,5 +34,12 @@ public class ProductController {
         String title = new String();
         model.addAttribute("title", title);
         return "form";
+    }
+
+    @PostMapping("/showGraph")
+    public String showGraph(@ModelAttribute("title") String title, Model model){
+        List<ProductDocument> products = productDocumentService.findAllByTitle(title);
+        model.addAttribute("products", products);
+        return "graph";
     }
 }
