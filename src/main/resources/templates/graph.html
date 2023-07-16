@@ -15,6 +15,7 @@
 </body>
 <script th:inline="javascript">
     var productsJsonString = '${products}';
+    console.log(productsJsonString);
     const products = JSON.parse(productsJsonString); 
     const labels = products[0].dates;
     const data = {
