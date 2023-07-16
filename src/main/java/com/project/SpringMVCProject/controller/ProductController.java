@@ -2,6 +2,7 @@ package com.project.SpringMVCProject.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.project.SpringMVCProject.models.Product;
 import com.project.SpringMVCProject.models.ProductDocument;
 import com.project.SpringMVCProject.services.ProductDocumentService;
@@ -42,6 +43,7 @@ public class ProductController {
         System.out.println(title);
         System.out.println("hello");
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         List<ProductDocument> products = productDocumentService.findAllByTitle(title);
         System.out.println(products);
         try {
