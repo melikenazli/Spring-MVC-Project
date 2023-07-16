@@ -19,7 +19,9 @@ public class ProductDocumentRepository {
     }
 
     public List<ProductDocument> findByTitle(String title){
-        Query query = new Query(Criteria.where("title").is(title));
+        System.out.println(title);
+        Query query = new Query();
+        query.addCriteria(Criteria.where("title").is(title));
         return mongoTemplate.find(query, ProductDocument.class, "productDocument"); // 3. parametre olarak collection name de verilebiliyor
     }
 
