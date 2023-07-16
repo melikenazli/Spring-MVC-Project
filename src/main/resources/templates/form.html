@@ -19,7 +19,7 @@
     </ul>
   </nav>
   <div class="form-wrapper-container">
-    <form th:action="@{/showGraph}" class="search-bar">
+    <form th:action="@{/showGraph}" class="search-bar" method="post">
       <input type="text" th:text = "${title}" placeholder="Enter Product Name...">
       <button type="submit">Submit</button>
     </form>
