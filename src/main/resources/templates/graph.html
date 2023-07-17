@@ -19,6 +19,7 @@
         </ul>
       </nav>
     <div class="container">
+        <h2 id="productName"></h2>
         <div class="centered-element">
             <canvas id="productChart" style="width:200%;height:200%"></canvas>
         </div>
@@ -30,6 +31,7 @@
     console.log(productsJsonString);
     const products = JSON.parse(productsJsonString); 
     const labels = products[0].dates;
+    document.getElementById("productName").innerHTML=products[0].title;
     const data = {
         labels: labels,
         datasets:[]
