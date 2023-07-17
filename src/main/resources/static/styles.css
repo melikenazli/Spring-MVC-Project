@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .search-bar{
@@ -44,4 +45,8 @@
     cursor: pointer;
     background-color: #6a5acd;
     color: #f5f5f5;
+}
+
+.custom-error-message{
+    color:#b52323;
 }
