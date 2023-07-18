@@ -24,6 +24,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The beginning point of the application.
+ * 
+ * This class handles reading XML files which contain product information and stores them inside relational and nosql databases.
+ * 
+ * Each XML file stores the products for different websites.
+ * 
+ * @author Melike Nazlı Karaca
+ */
+
 @SpringBootApplication
 public class SpringMvcProjectApplication implements CommandLineRunner{
 	@Autowired
@@ -36,6 +46,10 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		SpringApplication.run(SpringMvcProjectApplication.class, args);
 	}
 
+	/**
+	 * Finds each XML file to read inside the XML_files folder.
+	 * Saves the read products inside MySQL database.
+	 */
 	@Override
 	public void run(String... args) throws Exception {
 		repository.deleteAll();
@@ -45,6 +59,15 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		List<Product> products = readXMLFiles(filesList);
 		repository.saveAll(products);
 	}
+
+	/**
+	 * This method reads the XML files one by one to store the product information inside both MySQL database and MongoDB.
+	 * Names of the files are used to assign the web site name for each product where it is sold.
+	 * In this method, products are added to MongoDB one by one as they are being read.
+	 * 
+	 * @param filesList list of the files inside the directory
+	 * @return the list of all products
+	 */
 	private List<Product> readXMLFiles(File[] filesList){
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder;
@@ -82,6 +105,13 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		}
 	}
 
+	/**
+	 * This method reads the tags and creates Product object
+	 * Each product is represented as a list where each item is the same product but with different price and date
+	 * Products are read to be stored in MySQL
+	 * @param node Node object with product tag
+	 * @return product within the given node
+	 */
 	private List<Product> getProduct(Node node){
 		List<Product> productWithDifferentPrices = new ArrayList<>();
 		if (node.getNodeType() == Node.ELEMENT_NODE){
@@ -119,6 +149,12 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		return productWithDifferentPrices;
 	}
 
+	/**
+	 * This method reads each product to be stored in MongoDB
+	 * @param node Node object with product tag
+	 * @param websiteName to assign website field of the PrductDocument which is hold in MongoDB
+	 * @return product within the node as ProductDocument object
+	 */
 	private ProductDocument getProductDocument(Node node, String websiteName){
 		ProductDocument productDocument = new ProductDocument();
 		if (node.getNodeType() == Node.ELEMENT_NODE){
@@ -149,6 +185,12 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 		return productDocument;
 	}
 
+	/**
+	 * Method to get tag value
+	 * @param tag name of the xml tag
+	 * @param element Element object to get the value of
+	 * @return value of the tag represented as String
+	 */
 	private String getTagValue(String tag, Element element){
 		NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
 		Node node = (Node) nodeList.item(0);

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * Contoller class to handle requests to view products list and search for a product to see its price change through dates.
+ */
 @Controller
 public class ProductController {
     @Autowired
@@ -24,6 +27,11 @@ public class ProductController {
     @Autowired
     private ProductDocumentService productDocumentService;
 
+    /**
+     * Handles get requests to see the products list stored in MySQL database.
+     * @param model Model object to hold products list as an attribute to pass to the products-list view
+     * @return products-list view that displays products list on browser
+     */
     @GetMapping("/products")
     public String listProducts(Model model){
         List<Product> products = productService.findAllProductsOrderedByTitle();
@@ -31,11 +39,23 @@ public class ProductController {
         return "products-list";
     }
 
+    /**
+     * Handles get requests to see search bar 
+     * @return form view that displays the search bar to get product title from user
+     */
     @GetMapping("/products/search")
     public String createSearchBar(){
         return "form";
     }
 
+    /**
+     * Handles post requests to see the graph of the product with the title that user entered
+     * If there is no product with that title user stays in the search bar page and sees an error message
+     * If there is no error user is forwarded to the graph.html where the graph for the product is displayed
+     * @param title title name of the product entered by the user on search bar
+     * @param model Model object to add error message to or the list of products found with that title
+     * @return view 
+     */
     @PostMapping("/showGraph")
     public String showGraph(@RequestParam("title") String title, Model model){
         ObjectMapper objectMapper = new ObjectMapper();

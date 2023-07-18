@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * This class uses MongoTemplate to create operations on MongoDB.
+ */
+
 @Repository
 public class ProductDocumentRepository {
     @Autowired
@@ -18,18 +22,15 @@ public class ProductDocumentRepository {
         return mongoTemplate.save(productDocument);
     }
 
+    /**
+     * Finds the products with the given title in MongoDB database.
+     * @param title product title to search
+     * @return all products with that title
+     */
     public List<ProductDocument> findByTitle(String title){
         System.out.println(title);
         Query query = new Query();
         query.addCriteria(Criteria.where("title").is(title));
-        return mongoTemplate.find(query, ProductDocument.class, "productDocument"); // 3. parametre olarak collection name de verilebiliyor
-    }
-
-    public void createCollection(String collectionName){
-        mongoTemplate.createCollection(collectionName);
-    }
-
-    public boolean collectionExists(String collectionName){
-        return mongoTemplate.collectionExists(collectionName);
+        return mongoTemplate.find(query, ProductDocument.class, "productDocument");
     }
 }

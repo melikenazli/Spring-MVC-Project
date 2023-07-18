@@ -8,6 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Model class for products to be hold as documents inside productDocument collection in MongoDB.
+ */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

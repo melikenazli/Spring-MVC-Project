@@ -8,6 +8,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * Model for product data.
+ * This class creates 'products' table that holds the Product objects.
+ * Each field is a column of the table in MySQL database.
+ */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
