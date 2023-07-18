@@ -28,7 +28,7 @@ public class ProductDocumentRepository {
      * @return all products with that title
      */
     public List<ProductDocument> findByTitle(String title){
-        System.out.println(title);
+        //System.out.println(title);
         Query query = new Query();
         query.addCriteria(Criteria.where("title").is(title));
         return mongoTemplate.find(query, ProductDocument.class, "productDocument");
