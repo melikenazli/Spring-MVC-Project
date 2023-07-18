@@ -2,14 +2,14 @@
     <product>
         <productId>1</productId>
         <prices>
-            <price>10</price>
-            <price>2000</price>
             <price>25000</price>
+            <price>2000</price>
+            <price>10</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14</title>
         <brand>Apple</brand>
@@ -19,14 +19,14 @@
     <product>
         <productId>2</productId>
         <prices>
-            <price>61499</price>
-            <price>60999</price>
             <price>58999</price>
+            <price>60999</price>
+            <price>61499</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14 Pro</title>
         <brand>Apple</brand>
@@ -36,14 +36,14 @@
     <product>
         <productId>3</productId>
         <prices>
-            <price>65999</price>
-            <price>63899</price>
             <price>60999</price>
+            <price>63899</price>
+            <price>65999</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14 Pro Max</title>
         <brand>Apple</brand>

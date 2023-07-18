@@ -2,14 +2,14 @@
     <product>
         <productId>1</productId>
         <prices>
-            <price>47399</price>
-            <price>47999</price>
             <price>46999</price>
+            <price>47999</price>
+            <price>47399</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14</title>
         <brand>Apple</brand>
@@ -19,14 +19,14 @@
     <product>
         <productId>2</productId>
         <prices>
+            <price>62999</price>
+            <price>62999</price>
             <price>60999</price>
-            <price>62999</price>
-            <price>62999</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14 Pro</title>
         <brand>Apple</brand>
@@ -41,9 +41,9 @@
             <price>63999</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Iphone 14 Pro Max</title>
         <brand>Apple</brand>
@@ -53,14 +53,14 @@
     <product>
         <productId>4</productId>
         <prices>
-            <price>15999</price>
-            <price>14999</price>
             <price>13999</price>
+            <price>14999</price>
+            <price>15999</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Samsung Galaxy S21</title>
         <brand>Samsung</brand>
@@ -70,14 +70,14 @@
     <product>
         <productId>5</productId>
         <prices>
-            <price>31399</price>
-            <price>30000</price>
             <price>29000</price>
+            <price>30000</price>
+            <price>31399</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Samsung Galaxy S22</title>
         <brand>Samsung</brand>
@@ -87,14 +87,14 @@
     <product>
         <productId>6</productId>
         <prices>
-            <price>49999</price>
-            <price>48999</price>
             <price>46999</price>
+            <price>48999</price>
+            <price>49999</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Samsung Galaxy S23 Ultra</title>
         <brand>Samsung</brand>
@@ -104,14 +104,14 @@
     <product>
         <productId>7</productId>
         <prices>
-            <price>5519</price>
-            <price>4500</price>
             <price>4000</price>
+            <price>4500</price>
+            <price>5519</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Oppo A55</title>
         <brand>Oppo</brand>
@@ -121,14 +121,14 @@
     <product>
         <productId>8</productId>
         <prices>
-            <price>6799</price>
-            <price>6500</price>
             <price>6000</price>
+            <price>6500</price>
+            <price>6799</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Oppo A96</title>
         <brand>Oppo</brand>
@@ -138,14 +138,14 @@
     <product>
         <productId>9</productId>
         <prices>
-            <price>5895</price>
-            <price>5700</price>
             <price>5500</price>
+            <price>5700</price>
+            <price>5895</price>
         </prices>
         <dates>
-            <date>04-07-2023</date>
-            <date>27-06-2023</date>
             <date>20-06-2023</date>
+            <date>27-06-2023</date>
+            <date>04-07-2023</date>
         </dates>
         <title>Oppo A54</title>
         <brand>Oppo</brand>
