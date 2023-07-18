@@ -45,7 +45,7 @@ public class ProductController {
             model.addAttribute("err", "*There is no product with that title. Please try again.");
             return "form";
         }
-        System.out.println(products);
+        //System.out.println(products);
         try {
             model.addAttribute("products", objectMapper.writeValueAsString(products));
         } catch (JsonProcessingException e) {

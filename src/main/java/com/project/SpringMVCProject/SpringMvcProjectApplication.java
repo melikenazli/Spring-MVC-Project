@@ -68,9 +68,9 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 						productList.add(templist.get(j));
 					}
 				}
-				for (Product product: productList){
+				/*for (Product product: productList){
 					System.out.println(product);
-				}
+				}*/
 			}
 			return productList;
 		} catch (ParserConfigurationException e) {
@@ -104,7 +104,7 @@ public class SpringMvcProjectApplication implements CommandLineRunner{
 			for (int i=0;i< nodeList2.getLength();i++){
 				dates.add(LocalDate.parse(nodeList2.item(i).getTextContent(), formatter));
 			}
-			System.out.println(dates);
+			//System.out.println(dates);
 
 			for (int i=0;i< productWithDifferentPrices.size();i++){
 				Product tempProduct = productWithDifferentPrices.get(i);
